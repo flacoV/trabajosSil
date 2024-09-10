@@ -5,6 +5,7 @@ import LeftSidebar from '@/components/shared/LeftSidebar';
 import RightSidebar from '@/components/shared/RightSidebar';
 import Bottombar from '@/components/shared/Bottombar';
 import { Metadata } from 'next';
+import { connectToMongoDB } from '@/lib/db';
 
 const inter = Inter({ subsets: ["latin"]})
 
@@ -18,6 +19,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  connectToMongoDB();
   return (
     <html lang="es">
       <body
@@ -33,8 +35,7 @@ export default function RootLayout({
               {children}
               </div>
             </section>
-
-            <RightSidebar />
+            
           </main>
 
         <Bottombar />
